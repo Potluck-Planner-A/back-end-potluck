@@ -10,6 +10,9 @@ The following tutorial explains how to set up this project using PostgreSQL and 
 
 - [PostgreSQL, pgAdmin 4](https://www.postgresql.org/download/) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed in your local machine.
 - A Heroku app with the [Heroku PostgreSQL Addon](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) added to it.
+
+https://git.heroku.com/potluck-backend-buildweek.git
+
 - Development and testing databases created with [pgAdmin 4](https://www.pgadmin.org/docs/pgadmin4/4.29/database_dialog.html).
 
 ## Starting a New Project
