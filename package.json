@@ -10,11 +10,12 @@
     "resetdb": "npm run rollback && npm run migrate && npm run seed",
     "migrateh": "heroku run knex migrate:latest -a buildweekpotlucklambda",
     "rollbackh": "heroku run knex migrate:rollback -a buildweekpotlucklambda",
+    "table": "npm run rollback && npm run migrate && npm run seed",
     "databaseh": "heroku pg:psql -a buildweekpotlucklambda",
     "seedh": "heroku run knex seed:run -a buildweekpotlucklambda",
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
     "deploy": "git push heroku main",
-    "tableh": "npm run rollback && npm run migrate && npm run seed"
+    "tableh": "npm run rollbackh && npm run migrateh && npm run seedh"
   },
   "engines": {
     "node": "16.13.0"

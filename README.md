@@ -1,25 +1,88 @@
-# Build Week Scaffolding for Node and PostgreSQL
+#### Endpoints
 
-## Video Tutorial
+### Base URL
 
-The following tutorial explains how to set up this project using PostgreSQL and Heroku.
+- https://buildweekpotlucklambda.herokuapp.com/
 
-[![Setting up PostgreSQL for Build Week](https://img.youtube.com/vi/kTO_tf4L23I/maxresdefault.jpg)](https://www.youtube.com/watch?v=kTO_tf4L23I)
+Authentication will be implemented using JSON Web Tokens.
 
-## Requirements
+### user endpoints
 
-- [PostgreSQL, pgAdmin 4](https://www.postgresql.org/download/) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed in your local machine.
-- A Heroku app with the [Heroku PostgreSQL Addon](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) added to it.
+- to register a new account requires the following:
 
-https://git.heroku.com/potluck-backend-buildweek.git
+  - [1] username
+  - [2] password
+  - [3] email
 
-- Development and testing databases created with [pgAdmin 4](https://www.pgadmin.org/docs/pgadmin4/4.29/database_dialog.html).
+- to sign/login into account requires the following:
 
-## Starting a New Project
+  - [1] username
+  - [2] password
 
-- Create a new repository using this template, and clone it to your local.
-- Create a `.env` file and follow the instructions inside `knexfile.js`.
-- Fix the scripts inside `package.json` to use your Heroku app.
+- [ ] to register a new account use `[POST] method` to the following address
+- ` https://buildweekpotlucklambda.herokuapp.com/api/users/register`
+  example : on postman => Select Body - chose raw and change where it said text to JSON
+
+```
+{
+    "username":"herokutest",
+    "password":"1234"
+}
+```
+
+### a successful response will look like this ,depending on entering email since email is not required
+
+```
+{
+    "username": "herokutest"
+}
+```
+
+- [ ] to sign in to the created account use `[POST] method` to the following address
+- ` https://buildweekpotlucklambda.herokuapp.com/api/users/login`
+
+### a successful response will send back a token and response will look like the following:
+
+```
+  {
+    "message": "welcome herokutest ",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Imhlcm9rdXRlc3QiLCJwYXNzd29yZCI6IiQyYSQwOCRFLjMwLzdUSjY3RmZUZmFhNTNUL2kudmJ0ZktsVnlESDhIY01ua2ZGMlRWeURES0wxeDRFSyIsImlhdCI6MTYzNzExNTUxNCwiZXhwIjoxNjM3MjAxOTE0fQ.2V8KVc5o6yTc-0cVkNRGwebdg4Nk6ejxbIUPGWMUQxg"
+}
+```
+
+- [ ] `[POST] /api/potlucks/`
+      the token needs to be sent to the sever fo this to work
+      Inside Headers add Key: Authorization and Value: "should be the token"
+
+  - Returns the newly created project as the body of the response.
+
+```
+postman example ==>
+https://buildweekpotlucklambda.herokuapp.com/api/potlucks
+
+{
+    "potluck_name": "Thanksgiving",
+    "date": "2021-11-20T07:00:00.000Z",
+     "time": "13:00:00",
+    "location": "U.S.A",
+    "guests": ["guest 1", "guest 2"],
+    "foods": ["food 1", "foood 2"]
+
+}
+
+```
+
+```
+ response would be
+{
+    "potluck_name": "Thanksgiving",
+    "date": "2021-11-20T00:00:00.000Z",
+    "time": "13:00:00",
+    "location": "U.S.A",
+    "potluck_id": 1,
+    "user_id": 1
+}
+```
 
 ## Scripts
 
@@ -30,9 +93,6 @@ https://git.heroku.com/potluck-backend-buildweek.git
 - **seed**: Truncates all tables in the local development database, feel free to add more seed files.
 - **test**: Runs tests.
 - **deploy**: Deploys the main branch to Heroku.
-
-**The following scripts NEED TO BE EDITED before using: replace `YOUR_HEROKU_APP_NAME`**
-
 - **migrateh**: Migrates the Heroku database to the latest.
 - **rollbackh**: Rolls back migrations in the Heroku database.
 - **databaseh**: Interact with the Heroku database from the command line using psql.
@@ -67,3 +127,7 @@ https://git.heroku.com/potluck-backend-buildweek.git
 npm run databaseh
 which psql
 export PATH="/Library/PostgreSQL/14/bin/:$PATH"
+
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+restart dynos if necessery
