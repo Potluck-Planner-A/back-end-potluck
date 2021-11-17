@@ -14,7 +14,7 @@
     "seedh": "heroku run knex seed:run -a buildweekpotlucklambda",
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
     "deploy": "git push heroku main",
-    "tableh": "npm run rollbackh npm run migrateh npm run seedh"
+    "tableh": "npm run rollback && npm run migrate && npm run seed"
   },
   "engines": {
     "node": "16.13.0"
