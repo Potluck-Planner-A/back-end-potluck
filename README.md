@@ -66,4 +66,4 @@ https://git.heroku.com/potluck-backend-buildweek.git
 
 npm run databaseh
 which psql
-export PATH="/Library/PostgreSQL/12/bin/:$PATH"
+export PATH="/Library/PostgreSQL/14/bin/:$PATH"
