@@ -6,10 +6,10 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('foods').insert([
         {
-          food_name: 'spaghetti'
+          food_name: 'turkey'
         },
         {
-          food_name: 'hamberger'
+          food_name: 'cramberry sauce'
         },
       ]);
     });

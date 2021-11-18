@@ -84,6 +84,31 @@ https://buildweekpotlucklambda.herokuapp.com/api/potlucks
 }
 ```
 
+`[DELETE] /api/potlucks /:potluck_id`
+
+- Will delete a potluck with given id and will return
+- the deleted potluck as the response
+
+```
+example on post man    ===> hhttps://buildweekpotlucklambda.herokuapp.com/api/potlucks/4
+
+- the request does not have a body
+- the request has at Headers a key Authorization and value should be the token
+```
+
+```
+response
+{
+    "potluck_id": 4,
+    "potluck_name": "Xmas eve",
+    "date": "2021-12-24T00:00:00.000Z",
+    "time": "13:00:00",
+    "location": "U.S.A",
+    "user_id": 4
+}
+
+```
+
 ## Scripts
 
 - **start**: Runs the app in production.
